@@ -1,4 +1,5 @@
 import { useGetCryptos } from '../../hooks/services/useGetCryptos.ts';
+import { CryptosDataTable } from '../../components/CryptosDataTable';
 
 export const Home = () => {
   const { data, isLoading } = useGetCryptos();
@@ -16,11 +17,7 @@ export const Home = () => {
       Home
       <div>
         Data:
-        <ul>
-          {data.map((item) => (
-            <li key={item.publicKey}>{item.publicKey}</li>
-          ))}
-        </ul>
+        <CryptosDataTable data={data} />
       </div>
     </div>
   );
