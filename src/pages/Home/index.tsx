@@ -5,9 +5,10 @@ import { LastUpdated } from '../../components/LastUpdated';
 import { Loader } from '../../components/Loader';
 import { useGetCryptos } from '../../hooks/services/useGetCryptos';
 import { Card } from '../../components/Card';
+import { Error } from '../../components/Error';
 
 export const Home = () => {
-  const { data, isLoading, dataUpdatedAt, refetch, isFetching } =
+  const { data, isLoading, dataUpdatedAt, refetch, isFetching, isError } =
     useGetCryptos();
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export const Home = () => {
     };
   });
 
-  if (isLoading) {
+  if (isLoading && !isError) {
     return <Loader />;
   }
 
@@ -37,7 +38,11 @@ export const Home = () => {
         <h1 className="text-lg font-semibold text-gray-900">
           Top 100 connected nodes
         </h1>
-        <CryptosDataTable data={data} />
+        {!isError ? (
+          <CryptosDataTable data={data} />
+        ) : (
+          <Error onRetry={refetch} />
+        )}
       </Card>
     </section>
   );
