@@ -1,8 +1,9 @@
 import DataTable from 'react-data-table-component';
 
-import type { Crypto } from '../../types/cryptos';
 import { formatBitcoin } from '../../utils/formatBitcoin';
 import { formatUnixTimestamp } from '../../utils/formatUnixTimestamp';
+
+import type { Crypto } from '../../types/cryptos';
 
 export type DataTableProps = {
   data?: Crypto[];

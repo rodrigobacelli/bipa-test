@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 
 import { CryptosDataTable } from '../../components/CryptosDataTable';
 import { LastUpdated } from '../../components/LastUpdated';
-import { useGetCryptos } from '../../hooks/services/useGetCryptos.ts';
+import { useGetCryptos } from '../../hooks/services/useGetCryptos';
+import { Loader } from '../../components/Loader';
 
 export const Home = () => {
   const { data, isLoading, dataUpdatedAt, refetch, isFetching } =
@@ -21,11 +22,7 @@ export const Home = () => {
   });
 
   if (isLoading) {
-    return <div>loading</div>;
-  }
-
-  if (!data) {
-    return <div>no data</div>;
+    return <Loader />;
   }
 
   return (
@@ -37,7 +34,7 @@ export const Home = () => {
           onUpdate={refetch}
           isUpdating={isFetching}
         />
-        <CryptosDataTable data={data} />
+        {!data ? <div>no data</div> : <CryptosDataTable data={data} />}
       </div>
     </div>
   );
