@@ -1,8 +1,24 @@
-import { useGetCryptos } from '../../hooks/services/useGetCryptos.ts';
+import { useEffect } from 'react';
+
 import { CryptosDataTable } from '../../components/CryptosDataTable';
+import { LastUpdated } from '../../components/LastUpdated';
+import { useGetCryptos } from '../../hooks/services/useGetCryptos.ts';
 
 export const Home = () => {
-  const { data, isLoading } = useGetCryptos();
+  const { data, isLoading, dataUpdatedAt, refetch, isFetching } =
+    useGetCryptos();
+
+  useEffect(() => {
+    const intervalId = setInterval(
+      () => {
+        refetch();
+      },
+      import.meta.env.VITE_REFETCH_TIME_IN_MINUTES * 60 * 1000
+    );
+    return () => {
+      clearInterval(intervalId);
+    };
+  });
 
   if (isLoading) {
     return <div>loading</div>;
@@ -16,7 +32,11 @@ export const Home = () => {
     <div>
       Home
       <div>
-        Data:
+        <LastUpdated
+          lastUpdatedDate={new Date(dataUpdatedAt)}
+          onUpdate={refetch}
+          isUpdating={isFetching}
+        />
         <CryptosDataTable data={data} />
       </div>
     </div>

@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getCryptos } from '../../services/getCryptos.ts';
 
 export const useGetCryptos = () => {
-  const { data, isFetching, isLoading, refetch } = useQuery({
+  const { data, isFetching, isLoading, refetch, dataUpdatedAt } = useQuery({
     queryKey: ['todos'],
     queryFn: getCryptos,
   });
@@ -15,5 +15,6 @@ export const useGetCryptos = () => {
     isFetching,
     isLoading,
     refetch,
+    dataUpdatedAt,
   };
 };
