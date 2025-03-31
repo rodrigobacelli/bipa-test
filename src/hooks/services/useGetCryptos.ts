@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { getCryptos } from '../../services/getCryptos.ts';
+import { getCryptos } from '../../services/getCryptos';
 
 export const useGetCryptos = () => {
   const { data, isFetching, isLoading, refetch, dataUpdatedAt } = useQuery({

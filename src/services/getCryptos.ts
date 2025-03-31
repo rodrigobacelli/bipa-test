@@ -1,4 +1,4 @@
-import { Crypto } from '../types/cryptos.ts';
+import { Crypto } from '../types/cryptos';
 
 export const getCryptos = async (): Promise<Crypto[]> => {
   const response = await fetch(

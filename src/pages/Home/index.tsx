@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { CryptosDataTable } from '../../components/CryptosDataTable';
 import { LastUpdated } from '../../components/LastUpdated';
-import { useGetCryptos } from '../../hooks/services/useGetCryptos.ts';
+import { useGetCryptos } from '../../hooks/services/useGetCryptos';
 
 export const Home = () => {
   const { data, isLoading, dataUpdatedAt, refetch, isFetching } =
