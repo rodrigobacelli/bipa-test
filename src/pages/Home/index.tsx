@@ -28,22 +28,25 @@ export const Home = () => {
   }
 
   return (
-    <section className="flex w-full flex-col gap-4 pt-4">
-      <LastUpdated
-        lastUpdatedDate={new Date(dataUpdatedAt)}
-        onUpdate={refetch}
-        isUpdating={isFetching}
-      />
-      <Card className="flex flex-col gap-4">
-        <h1 className="text-lg font-semibold text-gray-900">
-          Top 100 connected nodes
-        </h1>
-        {!isError ? (
-          <CryptosDataTable data={data} />
-        ) : (
-          <Error onRetry={refetch} />
-        )}
-      </Card>
-    </section>
+    <>
+      <title>CryptoWatcher | Home</title>
+      <section className="flex w-full flex-col gap-4 pt-4">
+        <LastUpdated
+          lastUpdatedDate={new Date(dataUpdatedAt)}
+          onUpdate={refetch}
+          isUpdating={isFetching}
+        />
+        <Card className="flex flex-col gap-4">
+          <h1 className="text-lg font-semibold text-gray-900">
+            Top 100 connected nodes
+          </h1>
+          {!isError ? (
+            <CryptosDataTable data={data} />
+          ) : (
+            <Error onRetry={refetch} />
+          )}
+        </Card>
+      </section>
+    </>
   );
 };
