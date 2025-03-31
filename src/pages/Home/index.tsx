@@ -13,7 +13,7 @@ export const Home = () => {
       () => {
         refetch();
       },
-      10 * 60 * 1000
+      import.meta.env.VITE_REFETCH_TIME_IN_MINUTES * 60 * 1000
     );
     return () => {
       clearInterval(intervalId);
