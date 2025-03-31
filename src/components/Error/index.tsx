@@ -21,7 +21,7 @@ export const Error = ({ className, onRetry }: ErrorProps) => {
       <p className="flex flex-col items-center gap-2">
         <MdErrorOutline className="h-8 w-8" />
         An error occurred. Please try again later.
-        <Button onClick={onRetry}>Retry</Button>
+        {onRetry ? <Button onClick={onRetry}>Retry</Button> : null}
       </p>
     </div>
   );
