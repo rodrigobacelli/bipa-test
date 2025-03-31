@@ -29,7 +29,7 @@ const columns = [
   {
     key: 'capacity',
     name: 'Capacity',
-    selector: (row: Crypto) => formatBitcoin(row.capacity / 1000000000),
+    selector: (row: Crypto) => formatBitcoin(row.capacity / 100000000),
     right: true,
   },
   {
