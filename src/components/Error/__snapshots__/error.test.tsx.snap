@@ -31,11 +31,6 @@ exports[`components/Error > should render the Error Component 1`] = `
             />
           </svg>
           An error occurred. Please try again later.
-          <button
-            class="flex items-center gap-1 rounded-sm border px-2 py-1 text-sm enabled:cursor-pointer border-gray-900 text-gray-900 enabled:hover:bg-gray-900/20 enabled:focus:bg-gray-800/10 disabled:border-gray-500 disabled:text-gray-500"
-          >
-            Retry
-          </button>
         </p>
       </div>
     </div>
@@ -67,11 +62,6 @@ exports[`components/Error > should render the Error Component 1`] = `
           />
         </svg>
         An error occurred. Please try again later.
-        <button
-          class="flex items-center gap-1 rounded-sm border px-2 py-1 text-sm enabled:cursor-pointer border-gray-900 text-gray-900 enabled:hover:bg-gray-900/20 enabled:focus:bg-gray-800/10 disabled:border-gray-500 disabled:text-gray-500"
-        >
-          Retry
-        </button>
       </p>
     </div>
   </div>,
