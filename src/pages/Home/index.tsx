@@ -37,7 +37,7 @@ export const Home = () => {
         <h1 className="text-lg font-semibold text-gray-900">
           Top 100 connected nodes
         </h1>
-        {!data ? <div>no data</div> : <CryptosDataTable data={data} />}
+        <CryptosDataTable data={data} />
       </Card>
     </section>
   );
