@@ -1,6 +1,8 @@
 import DataTable from 'react-data-table-component';
 
-import type { Crypto } from '../../types/cryptos.ts';
+import type { Crypto } from '../../types/cryptos';
+import { formatBitcoin } from '../../utils/formatBitcoin';
+import { formatUnixTimestamp } from '../../utils/formatUnixTimestamp';
 
 export type DataTableProps = {
   data?: Crypto[];
@@ -26,19 +28,18 @@ const columns = [
   {
     key: 'capacity',
     name: 'Capacity',
-    selector: (row: Crypto) =>
-      `${new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 9, maximumFractionDigits: 9 }).format(row.capacity / 100000000)} BTC`,
+    selector: (row: Crypto) => formatBitcoin(row.capacity / 1000000000),
     right: true,
   },
   {
     key: 'firstSeen',
     name: 'First Seen',
-    selector: (row: Crypto) => row.firstSeen,
+    selector: (row: Crypto) => formatUnixTimestamp(row.firstSeen),
   },
   {
     key: 'updatedAt',
     name: 'Updated At',
-    selector: (row: Crypto) => row.updatedAt,
+    selector: (row: Crypto) => formatUnixTimestamp(row.updatedAt),
   },
   {
     key: 'country',
