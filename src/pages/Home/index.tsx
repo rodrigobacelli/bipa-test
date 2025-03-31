@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 
 import { CryptosDataTable } from '../../components/CryptosDataTable';
 import { LastUpdated } from '../../components/LastUpdated';
-import { useGetCryptos } from '../../hooks/services/useGetCryptos';
 import { Loader } from '../../components/Loader';
+import { useGetCryptos } from '../../hooks/services/useGetCryptos';
+import { Card } from '../../components/Card';
 
 export const Home = () => {
   const { data, isLoading, dataUpdatedAt, refetch, isFetching } =
@@ -26,16 +27,18 @@ export const Home = () => {
   }
 
   return (
-    <div>
-      Home
-      <div>
-        <LastUpdated
-          lastUpdatedDate={new Date(dataUpdatedAt)}
-          onUpdate={refetch}
-          isUpdating={isFetching}
-        />
+    <section className="flex w-full flex-col gap-4 pt-4">
+      <LastUpdated
+        lastUpdatedDate={new Date(dataUpdatedAt)}
+        onUpdate={refetch}
+        isUpdating={isFetching}
+      />
+      <Card className="flex flex-col gap-4">
+        <h1 className="text-lg font-semibold text-gray-900">
+          Top 100 connected nodes
+        </h1>
         {!data ? <div>no data</div> : <CryptosDataTable data={data} />}
-      </div>
-    </div>
+      </Card>
+    </section>
   );
 };
