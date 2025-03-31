@@ -4,6 +4,7 @@ import { formatBitcoin } from '../../utils/formatBitcoin';
 import { formatUnixTimestamp } from '../../utils/formatUnixTimestamp';
 
 import type { Crypto } from '../../types/cryptos';
+import { NoResults } from '../NoResults';
 
 export type DataTableProps = {
   data?: Crypto[];
@@ -50,5 +51,7 @@ const columns = [
 ];
 
 export const CryptosDataTable = ({ data = [] }: DataTableProps) => {
-  return <DataTable columns={columns} data={data} />;
+  return (
+    <DataTable columns={columns} data={data} noDataComponent={<NoResults />} />
+  );
 };

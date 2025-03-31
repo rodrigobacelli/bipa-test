@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
+
 import { formatDistanceToNow } from 'date-fns';
+import { twMerge } from 'tailwind-merge';
+import { RxUpdate } from 'react-icons/rx';
+
+import { Button } from '../Button';
 
 export type LastUpdatedProps = {
   onUpdate?: () => void;
@@ -25,7 +30,7 @@ export const LastUpdated = ({
       if (lastUpdatedDate) {
         setTime(formatDistanceToNow(lastUpdatedDate));
       }
-    }, 60000);
+    }, 60 * 1000);
     return () => {
       clearInterval(intervalId);
     };
@@ -36,9 +41,18 @@ export const LastUpdated = ({
       {!isUpdating ? (
         <p className="text-sm text-gray-700">Updated {time} ago</p>
       ) : null}
-      <button onClick={onUpdate} disabled={isUpdating}>
-        {isUpdating ? 'Updating' : 'Update'}
-      </button>
+      <Button
+        onClick={onUpdate}
+        disabled={isUpdating}
+        startIcon={({ className, ...startIconProps }) => (
+          <RxUpdate
+            {...startIconProps}
+            className={twMerge(className, isUpdating && 'animate-spin')}
+          />
+        )}
+      >
+        Update
+      </Button>
     </div>
   );
 };
