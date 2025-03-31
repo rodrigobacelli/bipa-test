@@ -12,7 +12,6 @@ export default defineConfig({
     globals: true,
     setupFiles: './src/tests/setup.ts',
     dir: './src',
-    exclude: ['dist/*'],
-    coverage: { provider: 'istanbul', exclude: ['src/tests/*', 'dist/*'] },
+    exclude: ['dist/*', 'node_modules/*'],
   },
 });
